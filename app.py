@@ -2,11 +2,11 @@ from flask import Flask
 from flask_cors import CORS
 import yaml 
 
-fileconfig = open("config.yaml")
-configuration = yaml.load(fileconfig, Loader=yaml.FullLoader)
-flaskConfiguration = configuration["flask"]
+config_file = open("config.yaml")
+configuration = yaml.load(config_file, Loader=yaml.FullLoader)
+flask_conf = configuration["flask"]
 
-app = Flask(flaskConfiguration["name"])
+app = Flask(flask_conf["name"])
 app.config.from_object(__name__)
 
 # Enable CORS policy
@@ -16,5 +16,7 @@ CORS(app)
 def ping_pong():
     return "pong!"
 
+
+
 if __name__ == '__main__':
-    app.run(host=flaskConfiguration["host"], port=flaskConfiguration["port"], debug=flaskConfiguration["debug"])
+    app.run(host=flask_conf["host"], port=flask_conf["port"], debug=flask_conf["debug"])
