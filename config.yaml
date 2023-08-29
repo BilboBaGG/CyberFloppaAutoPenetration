@@ -5,4 +5,4 @@ flask:
   debug: True
 
   jwt_secret: CyberFloppaAutoPenetration_Yarik_I_Misha_Boboki
-  jwt_TTL: 5
+  jwt_TTL: 3600

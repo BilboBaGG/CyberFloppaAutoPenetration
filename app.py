@@ -3,7 +3,6 @@ from flask_cors import CORS
 import yaml 
 import argparse
 from tokens import *
-from tools.web.sqlmap.thirdparty.bottle.bottle import cookie_encode
 
 parser = argparse.ArgumentParser(description='Web inteface for the most popular penetration testing tools.', epilog="AutoPenetration by CyberFloppa")
 parser.add_argument('-u', dest='username', help='username admin user')
