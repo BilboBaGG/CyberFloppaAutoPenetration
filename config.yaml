@@ -3,3 +3,6 @@ flask:
   host: 0.0.0.0
   port: 80
   debug: True
+
+  jwt_secret: CyberFloppaAutoPenetration_Yarik_I_Misha_Boboki
+  jwt_TTL: 5
