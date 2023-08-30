@@ -34,6 +34,22 @@ def dashboard():
     else:
         return redirect(url_for('login'))
 
+@app.route('/about', methods=['GET'])
+def about():
+    cookie = request.cookies.get("Auth")
+    if is_valid_auth_jwt(cookie, flask_conf["jwt_secret"], flask_conf["jwt_TTL"]):
+        return render_template("about.html")
+    else:
+        return redirect(url_for('login'))
+    
+@app.route('/nmap', methods=['GET', 'POST'])
+def nmap():
+    cookie = request.cookies.get("Auth")
+    if is_valid_auth_jwt(cookie, flask_conf["jwt_secret"], flask_conf["jwt_TTL"]):
+        return render_template("nmap.html")
+    else:
+        return redirect(url_for('login'))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -57,6 +73,11 @@ def login():
         else:    
             return render_template("login.html")
 
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    response = make_response(redirect(url_for('login')))
+    response.delete_cookie("Auth")
+    return response
 
 if __name__ == '__main__':
     args = parser.parse_args()
