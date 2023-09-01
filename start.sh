@@ -1,2 +1,2 @@
 WORKDIR=$PWD
-supervisord -c -n /etc/supervisord/conf.d/supervisord.conf
+supervisord -n -c $WORKDIR/etc/supervisord.conf
